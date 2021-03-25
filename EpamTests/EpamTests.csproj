@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EpamTaks\EpamTaks\EpamTaks.csproj" />
+    <ProjectReference Include="..\EpamTaks\EpamTaks\EpamTaks.csproj" />
   </ItemGroup>
 
 </Project>
