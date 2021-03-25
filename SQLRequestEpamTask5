@@ -1,0 +1,30 @@
+CREATE TABLE public.students
+(
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.teachers
+(
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public."teacher_to_student"
+(
+    id bigint NOT NULL,
+    student_id bigint NOT NULL,
+    teacher_id bigint NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT "stidentsID" FOREIGN KEY (student_id)
+        REFERENCES public.students (id) MATCH SIMPLE,
+    CONSTRAINT "teachersID" FOREIGN KEY (teacher_id)
+        REFERENCES public.teachers (id) MATCH SIMPLE
+);
+
+SELECT teachers.name as teacher 
+FROM teachers
+  LEFT JOIN teacher_to_students ON teachers.id = teacher_to_student.teacher_id
+WHERE teacher_to_student IS NULL
